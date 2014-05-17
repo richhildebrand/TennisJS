@@ -1,16 +1,12 @@
-define(['TennisMatch'],
-function(TennisMatch) {
+define(['TennisMatch', 'Player'],
+function(TennisMatch, Player) {
    'use strict';
 
    var TennisMatch = function()  {  };
 
-   TennisMatch.prototype.PlayerOne = {
-      Points: 0
-   };
+   TennisMatch.prototype.PlayerOne = new Player();
 
-   TennisMatch.prototype.PlayerTwo = {
-      Points: 0
-   };
+   TennisMatch.prototype.PlayerTwo = new Player();
 
    return TennisMatch;
 });
