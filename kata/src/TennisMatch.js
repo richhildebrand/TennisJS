@@ -10,18 +10,18 @@ function(ScoreCalculator, Player) {
    TennisMatch.prototype.PlayerTwo = new Player();
 
    TennisMatch.prototype.PlayerOneScores = function() {
-      this.ScoreCalculator.GainPoint(this.PlayerOne);
-
-      if (this.PlayerOne.Points == 'Game') {
-         this.Winner = this.PlayerOne;
-      }
+      this.ScorePoint(this.PlayerOne);
    }
 
    TennisMatch.prototype.PlayerTwoScores = function() {
-      this.ScoreCalculator.GainPoint(this.PlayerTwo);
+      this.ScorePoint(this.PlayerTwo);
+   }
 
-      if (this.PlayerTwo.Points == 'Game') {
-         this.Winner = this.PlayerTwo;
+   TennisMatch.prototype.ScorePoint = function(player) {
+      this.ScoreCalculator.GainPoint(player);
+
+      if (player.Points == 'Game') {
+         this.Winner = player;
       }
    }
 
