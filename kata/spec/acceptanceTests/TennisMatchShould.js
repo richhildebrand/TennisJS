@@ -13,6 +13,12 @@ define(['Squire'], function(Squire) {
          });
       });
 
+      var ScoreNTimes = function(timesToScore, match, scoreMethod) {
+         for (var i = 0; i < timesToScore; i++) {
+            match[scoreMethod]();
+         }
+      }
+
       it('start with a score of 0 to 0', function() {
          expect(_tennisMatch.PlayerOne.Points).to.equal(0);
          expect(_tennisMatch.PlayerTwo.Points).to.equal(0);
@@ -42,21 +48,13 @@ define(['Squire'], function(Squire) {
          expect(_tennisMatch.PlayerTwo.Points).to.equal(15);
       });
 
-      it('end if a player scores the first four points', function() {
-         _tennisMatch.PlayerOneScores();
-         _tennisMatch.PlayerOneScores();
-         _tennisMatch.PlayerOneScores();
-         _tennisMatch.PlayerOneScores();
-
+      it('end if a player one scores the first four points', function() {
+         ScoreNTimes(4, _tennisMatch, 'PlayerOneScores');
          expect(_tennisMatch.Winner).to.equal(_tennisMatch.PlayerOne);
       });
 
-      it('end if a player scores the first four points', function() {
-         _tennisMatch.PlayerTwoScores();
-         _tennisMatch.PlayerTwoScores();
-         _tennisMatch.PlayerTwoScores();
-         _tennisMatch.PlayerTwoScores();
-
+      it('end if a player two scores the first four points', function() {
+         ScoreNTimes(4, _tennisMatch, 'PlayerTwoScores');
          expect(_tennisMatch.Winner).to.equal(_tennisMatch.PlayerTwo);
       });
    });
