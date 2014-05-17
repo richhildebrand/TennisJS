@@ -8,7 +8,7 @@ function () {
 
    ScoreCalculator.prototype.PrintScore = function(playerOnePoints, playerTwoPoints) {
       if (this.IsAdvancedScore(playerOnePoints, playerTwoPoints)) {
-         return this.GetAdvancedScore();
+         return this.GetAdvancedScore(playerOnePoints, playerTwoPoints);
       }
 
       var playerOnePrintablePoints = this.GetBasicScore(playerOnePoints);
@@ -22,8 +22,14 @@ function () {
           && playerTwoPoints >= deuceScoring;
    };
 
-   ScoreCalculator.prototype.GetAdvancedScore = function(playerOnePoints) {
-      return 'Deuce';
+   ScoreCalculator.prototype.GetAdvancedScore = function(playerOnePoints, playerTwoPoints) {
+      if (playerOnePoints === playerTwoPoints) {
+         return 'Deuce';
+      } else if (playerOnePoints > playerTwoPoints) {
+         return 'Advantage Player One';
+      } else if (playerTwoPoints > playerOnePoints) {
+         return 'Advantage Player Two';
+      }
    };
 
    ScoreCalculator.prototype.GetBasicScore = function(score) {

@@ -63,5 +63,23 @@ define(['Squire'], function(Squire) {
          
          expect(score).to.equal('Deuce');
       });
+
+      it('be advantage player one when it is 4 to 3', function() {
+         _tennisMatch.PlayerOne.Points = 4;
+         _tennisMatch.PlayerTwo.Points = 3;
+
+         var score = _tennisMatch.GetScore();
+         
+         expect(score).to.equal('Advantage Player One');
+      });
+
+      it('be advantage player one when it is 6 to 7', function() {
+         _tennisMatch.PlayerOne.Points = 6;
+         _tennisMatch.PlayerTwo.Points = 7;
+
+         var score = _tennisMatch.GetScore();
+         
+         expect(score).to.equal('Advantage Player Two');
+      });
    });
 });
