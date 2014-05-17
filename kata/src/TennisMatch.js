@@ -1,5 +1,5 @@
-define(['TennisMatch', 'Player'],
-function(TennisMatch, Player) {
+define(['Player'],
+function(Player) {
    'use strict';
 
    var TennisMatch = function()  {  };

@@ -1,5 +1,5 @@
-define(['Player'], 
-function(Player) {
+define([], 
+function() {
    'use strict';
 
    var Player = function() { }
