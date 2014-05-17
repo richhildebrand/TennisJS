@@ -7,8 +7,8 @@ function () {
    ScoreCalculator.prototype._playerTwoPoints = undefined
 
    ScoreCalculator.prototype.PrintScore = function(playerOnePoints, playerTwoPoints) {
-      if (this.IsEndOfGame()) {
-         return;
+      if (this.IsEndOfGame(playerOnePoints, playerTwoPoints)) {
+         return this.GetEndOfGameScore(playerOnePoints, playerTwoPoints);
       };
 
       if (this.IsAdvancedScore(playerOnePoints, playerTwoPoints)) {
@@ -23,6 +23,14 @@ function () {
    ScoreCalculator.prototype.IsEndOfGame = function(playerOnePoints, playerTwoPoints) {
       return this.EitherPlayerHasEnoughPointsToWin(playerOnePoints, playerTwoPoints)
           && this.EitherPlayerIsWinningByTwo(playerOnePoints, playerTwoPoints);
+   }
+
+   ScoreCalculator.prototype.GetEndOfGameScore = function(playerOnePoints, playerTwoPoints) {
+      if (playerOnePoints > playerTwoPoints) {
+         return 'Player One Wins';
+      }
+
+      return 'Player Two Wins';
    }
 
    ScoreCalculator.prototype.EitherPlayerHasEnoughPointsToWin = function(playerOnePoints, playerTwoPoints) {

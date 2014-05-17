@@ -90,5 +90,14 @@ define(['Squire'], function(Squire) {
          
          expect(score).to.equal('Player One Wins');
       });
+
+      it('name player two the winner', function() {
+         _tennisMatch.PlayerOne.Points = 8;
+         _tennisMatch.PlayerTwo.Points = 10;
+
+         var score = _tennisMatch.GetScore();
+         
+         expect(score).to.equal('Player Two Wins');
+      });
    });
 });
