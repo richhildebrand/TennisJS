@@ -3,9 +3,6 @@ function () {
 
    ScoreCalculator = function() { }
 
-   ScoreCalculator.prototype._playerOnePoints = undefined;
-   ScoreCalculator.prototype._playerTwoPoints = undefined
-
    ScoreCalculator.prototype.PrintScore = function(playerOnePoints, playerTwoPoints) {
       if (this.IsEndOfGame(playerOnePoints, playerTwoPoints)) {
          return this.GetEndOfGameScore(playerOnePoints, playerTwoPoints);
