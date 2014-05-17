@@ -5,9 +5,10 @@ function(ScoreCalculator, Player) {
    var TennisMatch = function() { };
 
    TennisMatch.prototype.ScoreCalculator = new ScoreCalculator();
-
    TennisMatch.prototype.PlayerOne = new Player();
    TennisMatch.prototype.PlayerTwo = new Player();
+
+   TennisMatch.prototype.Winner = undefined;
 
    TennisMatch.prototype.PlayerOneScores = function() {
       this.ScorePoint(this.PlayerOne);
@@ -17,15 +18,11 @@ function(ScoreCalculator, Player) {
       this.ScorePoint(this.PlayerTwo);
    }
 
-   TennisMatch.prototype.ScorePoint = function(player) {
-      this.ScoreCalculator.GainPoint(player);
-
-      if (player.Points == 'Game') {
-         this.Winner = player;
-      }
+   TennisMatch.prototype.GetScore = function() {
+      return this.ScoreCalculator.PrintScore(this.PlayerOne.Points, this.PlayerTwo.Points); 
    }
 
-   TennisMatch.prototype.Winner = undefined;
+
 
    return TennisMatch;
 });
